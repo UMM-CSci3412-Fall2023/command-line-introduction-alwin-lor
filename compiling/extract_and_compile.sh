@@ -1,2 +1,3 @@
-echo "I am working right now"
+#!/bin/bash 
 
+tar -kzxf NthPrime.tgz
