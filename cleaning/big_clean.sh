@@ -1,6 +1,8 @@
 #!/bin/bash
-tempfile="$(mktemp -d XXX)" ##make a temporary directory to work in
-echo "$tempfile"
-##cd XXXX || exit ##change directories into the temp directory or exit
+tempdir="$(mktemp -d XXX)" ##make a temporary directory to work in
+echo "$tempdir"
 
-tar -kzxf big_dir.tgz -C ./"$tempfile"
+tar -kzxf "$1" -C ./"$tempdir"
+
+grep -rilZ "delete me!" "$tempdir" | xargs -0 rm ##looks for files with "delete me!" and deletes them
+
